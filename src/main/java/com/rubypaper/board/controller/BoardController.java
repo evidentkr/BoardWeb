@@ -25,6 +25,11 @@ public class BoardController {
 		return "board/insertBoard";
 	}
 
+	@PostMapping("/insertBoard")
+	public String insertBoard(Board board) {
+		boardService.insertBoard(board);
+		return "redirect:getBoardList";
+	}
 //	@PostMapping("/insertBoard")
 //	public String insertBoard(Board board, @AuthenticationPrincipal SecurityUser principal) {
 //		board.setMember(principal.getMember());
@@ -32,17 +37,17 @@ public class BoardController {
 //		return "redirect:getBoardList";
 //	}
 
-//	@PostMapping("/updateBoard")
-//	public String updateBoard(Board board) {
-//		boardService.updateBoard(board);
-//		return "forward:getBoardList";
-//	}
+	@PostMapping("/updateBoard")
+	public String updateBoard(Board board) {
+		boardService.updateBoard(board);
+		return "forward:getBoardList";
+	}
 
-//	@GetMapping("/deleteBoard")
-//	public String deleteBoard(Board board) {
-//		boardService.deleteBoard(board);
-//		return "forward:getBoardList";
-//	}
+	@GetMapping("/deleteBoard")
+	public String deleteBoard(Board board) {
+		boardService.deleteBoard(board);
+		return "forward:getBoardList";
+	}
 
 	@RequestMapping("/getBoardList")
 	public String getBoardList(Model model, Board board) {
@@ -61,10 +66,10 @@ public class BoardController {
 //		return "board/getBoardList";
 //	}
 
-//	@GetMapping("/getBoard")
-//	public String getBoard(Board board, Model model) {
-//		model.addAttribute("board", boardService.getBoard(board));
-//		return "board/getBoard";
-//	}
+	@GetMapping("/getBoard")
+	public String getBoard(Board board, Model model) {
+		model.addAttribute("board", boardService.getBoard(board));
+		return "board/getBoard";
+	}
 
 }
